@@ -1,0 +1,10 @@
+[core]
+	editor = /usr/bin/vim
+[user]
+	email = vreyesvaldivieso@gmail.com
+	name = Vicente Reyes
+	signingkey = 4D2557BA6E35B45FACCBBA487A7F26C8955BD52D
+[color]
+	ui = auto
+[commit]
+	gpgsign = true
