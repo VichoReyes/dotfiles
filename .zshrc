@@ -25,7 +25,7 @@ WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider
 
 
 ## Keybindings section
-bindkey -v
+bindkey -e
 bindkey '^[[7~' beginning-of-line                               # Home key
 bindkey '^[[H' beginning-of-line                                # Home key
 if [[ "${terminfo[khome]}" != "" ]]; then
@@ -197,3 +197,5 @@ source /etc/profile.d/vte.sh
 alias t=trash-put
 alias r=ranger
 source /usr/share/doc/pkgfile/command-not-found.zsh
+alias p='ping google.com'
+alias ls=exa

@@ -38,7 +38,7 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -f -i"
 bindsym $mod+p exec --no-startup-id gopass ls --flat | dmenu | xargs --no-run-if-empty gopass show -c
 
 # generate new password
-bindsym $mod+g exec --no-startup-id "notify-send 'changing or (shift) creating password'; gopass ls --flat | dmenu | xargs --no-run-if-empty gopass generate -c --xs ' '"
+bindsym $mod+g exec --no-startup-id "notify-send 'changing or (shift) creating password'; gopass ls --flat | dmenu | xargs --no-run-if-empty gopass generate -f -c --xs ' '"
 
 # launch categorized menu
 bindsym $mod+z exec --no-startup-id morc_menu
