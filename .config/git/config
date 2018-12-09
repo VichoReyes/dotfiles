@@ -8,3 +8,5 @@
 	ui = auto
 [commit]
 	gpgsign = true
+[credential]
+	helper = /usr/bin/pass-git-helper
