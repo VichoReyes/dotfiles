@@ -32,7 +32,7 @@ bindsym $mod+Return exec $terminal
 bindsym $mod+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -f -i"
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -f -i"
 
 # start password selector
 bindsym $mod+p exec --no-startup-id gopass ls --flat | dmenu | xargs --no-run-if-empty gopass show -c
@@ -65,7 +65,7 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next || cmus-remote --next 
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous || cmus-remote --prev || mopc prev
 # Start Applications
 bindsym $mod+Ctrl+b exec $terminal -e 'bmenu'
-bindsym $mod+F2 exec qutebrowser
+bindsym $mod+F2 exec firefox
 bindsym $mod+F3 exec pcmanfm
 # bindsym $mod+F3 exec ranger
 bindsym $mod+Shift+F3 exec gksu pcmanfm
@@ -188,8 +188,10 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 # Open applications on specific workspaces
 
 assign [class="qutebrowser"] $ws1
+assign [class="Firefox"] $ws1
 assign [class="Emacs"] $ws2
 assign [class="Code"] $ws2
+assign [class="code-oss"] $ws2
 assign [class="transmission-qt"] $ws6
 assign [class="Rambox"] $ws7
 assign [class="Lollypop"] $ws8
@@ -396,13 +398,13 @@ set $mode_spawn Spawn: (w)eb, (e)ditor, (r)anger, (c)hat, (m)usic
 bindsym $mod+s mode "$mode_spawn"
 
 mode "$mode_spawn" {
-        bindsym $mod+w  exec qutebrowser; mode "default"
-        bindsym $mod+e  exec emacsclient -ca ''; mode "default"
+        bindsym $mod+w  exec firefox; mode "default"
+        bindsym $mod+e  exec code-oss --reuse-window; mode "default"
         bindsym $mod+r  exec $terminal -e 'ranger'; mode "default"
         bindsym $mod+c  exec rambox; mode "default"
         bindsym $mod+m  exec lollypop; mode "default"
-        bindsym w       exec qutebrowser
-        bindsym e       exec emacsclient -ca ''
+        bindsym w       exec firefox
+        bindsym e       exec code-oss --reuse-window
         bindsym r       exec $terminal -e 'ranger'
         bindsym c       exec rambox
         bindsym m       exec lollypop
