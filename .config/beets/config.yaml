@@ -1,0 +1,4 @@
+directory: ~/Música
+library: ~/.local/share/musiclibrary.db
+import:
+        copy: no
