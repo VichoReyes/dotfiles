@@ -5,7 +5,7 @@
 	name = Vicente Reyes
 [color]
 	ui = auto
-[credential]
-	helper = /usr/bin/pass-git-helper
+#[credential]
+#	helper = /usr/bin/pass-git-helper
 [alias]
 	lg = log --color --graph --oneline --decorate
