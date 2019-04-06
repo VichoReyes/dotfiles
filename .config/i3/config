@@ -4,7 +4,7 @@
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
 
-set $terminal termite
+set $terminal gnome-terminal
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
 
@@ -32,7 +32,7 @@ bindsym $mod+Return exec $terminal
 bindsym $mod+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="dmenu -f -i"
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -f -i"
 
 # start password selector
 bindsym $mod+p exec --no-startup-id gopass ls --flat | dmenu | xargs --no-run-if-empty gopass show -c
@@ -40,42 +40,37 @@ bindsym $mod+p exec --no-startup-id gopass ls --flat | dmenu | xargs --no-run-if
 # generate new password
 bindsym $mod+g exec --no-startup-id "notify-send 'changing or (shift) creating password'; gopass ls --flat | dmenu | xargs --no-run-if-empty gopass generate -f -c --xs ' '"
 
-# launch categorized menu
-bindsym $mod+z exec --no-startup-id morc_menu
-
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-exec --no-startup-id volumeicon
+#exec --no-startup-id volumeicon
 #bindsym $mod+Ctrl+m exec $terminal -e 'alsamixer'
 #exec --no-startup-id pa-applet
-exec --no-startup-id start-pulseaudio-x11
-bindsym $mod+Ctrl+m exec pavucontrol
+#exec --no-startup-id start-pulseaudio-x11
+#bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
 
+# Volume controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 5
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 5
+bindsym XF86AudioMute exec --no-startup-id pamixer -t
+
 # Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Media Player controls
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause || cmus-remote --pause || mopc toggle
 bindsym XF86AudioNext exec --no-startup-id playerctl next || cmus-remote --next || mopc next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous || cmus-remote --prev || mopc prev
-# Start Applications
-bindsym $mod+Ctrl+b exec $terminal -e 'bmenu'
-bindsym $mod+F2 exec firefox
-bindsym $mod+F3 exec pcmanfm
-# bindsym $mod+F3 exec ranger
-bindsym $mod+Shift+F3 exec gksu pcmanfm
-bindsym $mod+F5 exec $terminal -e 'mocp'
-bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+
+# Volume Control
+
+# Screenshots
 bindsym Control+Shift+3 exec flameshot full -p ~/Imágenes/Capturas/
 bindsym Control+Shift+4 exec flameshot gui -p ~/Imágenes/Capturas/
-bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # focus_follows_mouse no
 
@@ -399,14 +394,12 @@ bindsym $mod+s mode "$mode_spawn"
 
 mode "$mode_spawn" {
         bindsym $mod+w  exec firefox; mode "default"
-        bindsym $mod+e  exec code-oss --reuse-window; mode "default"
-        bindsym $mod+r  exec $terminal -e 'ranger'; mode "default"
-        bindsym $mod+c  exec rambox; mode "default"
+        bindsym $mod+e  exec code --reuse-window; mode "default"
+        # bindsym $mod+r  exec $terminal -e 'ranger'; mode "default"
         bindsym $mod+m  exec lollypop; mode "default"
         bindsym w       exec firefox
-        bindsym e       exec code-oss --reuse-window
-        bindsym r       exec $terminal -e 'ranger'
-        bindsym c       exec rambox
+        bindsym e       exec code --reuse-window
+        # bindsym r       exec $terminal -e 'ranger'
         bindsym m       exec lollypop
         bindsym Return  mode "default"
         bindsym Escape  mode "default"
