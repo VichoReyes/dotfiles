@@ -1,0 +1,26 @@
+{
+    "telemetry.enableTelemetry": false,
+    "explorer.confirmDelete": false,
+    "python.linting.pylintPath": "pylint3",
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "window.titleBarStyle": "custom",
+    "editor.formatOnSave": true,
+    "elixirLS.dialyzerEnabled": false,
+    "emmet.includeLanguages": {
+        "HTML (Eex)": "html"
+    },
+    "files.associations": {
+        "*.html.eex": "html"
+    },
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "window.zoomLevel": 0,
+    "vim.useSystemClipboard": true
+}
