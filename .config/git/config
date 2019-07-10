@@ -3,9 +3,12 @@
 [user]
 	email = vreyesvaldivieso@gmail.com
 	name = Vicente Reyes
+	signingkey = D692DB31051102AC2D07C24EE594BA444CBE8742
 [color]
 	ui = auto
 [credential]
 	helper = /usr/bin/pass-git-helper
 [alias]
 	lg = log --color --graph --oneline --decorate
+[commit]
+	gpgsign = true

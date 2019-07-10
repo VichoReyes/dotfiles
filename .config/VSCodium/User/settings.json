@@ -22,5 +22,7 @@
         "**/.factorypath": true
     },
     "window.zoomLevel": 0,
-    "vim.useSystemClipboard": true
+    "vim.useSystemClipboard": true,
+    "git.enableSmartCommit": true,
+    "python.jediEnabled": false
 }
