@@ -1,5 +1,14 @@
-# ~i3~ sway config file (v4)
-# adapted from manjaro i3
+# Executables needed for this to work:
+# termite
+# sway{idle,lock}
+# rofi
+# dmenu
+# dex
+# swayblurlock
+# brightnessctl
+# i3exit
+# inactive-windows-transparency.py (from /contrib/ in the sway repo)
+# mako
 
 ### Variables
 #
@@ -18,9 +27,6 @@ set $menu rofi -show drun -show-icons
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
-
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/vicente/Imágenes/TheLastNight_08.jpg fill
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 1
@@ -71,39 +77,22 @@ bindsym $mod+p exec --no-startup-id gopass ls --flat | dmenu | xargs --no-run-if
 # generate new password
 bindsym $mod+g exec --no-startup-id "notify-send 'changing or (shift) creating password'; gopass ls --flat | dmenu | xargs --no-run-if-empty gopass generate -f -c --xs ' '"
 
-################################################################################################
-## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
-################################################################################################
-
-#exec --no-startup-id volumeicon
-#bindsym $mod+Ctrl+m exec $term -e 'alsamixer'
-#exec --no-startup-id pa-applet
-exec pulseaudio --start
-bindsym $mod+Ctrl+m exec pavucontrol
-
-################################################################################################
-
-exec mako
-
 # Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec brightnessctl set '+5%'
+bindsym XF86MonBrightnessDown exec brightnessctl set '5%-'
+
+# Keyboard brightness controls
+bindsym XF86KbdBrightnessUp exec brightnessctl --device smc::kbd_backlight set '+5%'
+bindsym XF86KbdBrightnessDown exec brightnessctl --device smc::kbd_backlight set '5%-'
 
 # Media Player controls
-bindsym --locked XF86AudioPlay exec --no-startup-id playerctl play-pause || cmus-remote --pause || mopc toggle
-bindsym --locked XF86AudioNext exec --no-startup-id playerctl next || cmus-remote --next || mopc next
-bindsym --locked XF86AudioPrev exec --no-startup-id playerctl previous || cmus-remote --prev || mopc prev
-# Start Applications
-bindsym $mod+Ctrl+b exec $term -e 'bmenu'
-bindsym $mod+F2 exec firefox
-bindsym $mod+F3 exec pcmanfm
-# bindsym $mod+F3 exec ranger
-bindsym $mod+Shift+F3 exec gksu pcmanfm
-bindsym $mod+F5 exec $term -e 'mocp'
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+bindsym --locked XF86AudioNext exec playerctl next
+bindsym --locked XF86AudioPrev exec playerctl previous
+
+# Screenshots
 bindsym Control+Shift+3 exec grim "$(date '+Imágenes/Capturas/Captura del %d de %b %y a las %T.png')"
-bindsym Control+Shift+4 exec grim -g "$(slurp -b 00000033)" "$(date '+Imágenes/Capturas/Captura del %d de %b %y a las %T.png')" 2> errors.log
-bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
+bindsym Control+Shift+4 exec grim -g "$(slurp -b 00000033)" "$(date '+Imágenes/Capturas/Captura del %d de %b %y a las %T.png')"
 
 # focus_follows_mouse no
 
@@ -214,51 +203,18 @@ bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 
 # Open applications on specific workspaces
-
 assign [class="qutebrowser"] $ws1
 assign [class="Firefox"] $ws1
 assign [class="Emacs"] $ws2
 assign [class="Code"] $ws2
 assign [class="code-oss"] $ws2
+assign [class="VSCodium"] $ws2
 assign [class="transmission-qt"] $ws6
 assign [class="Rambox"] $ws7
 assign [class="lollypop"] $ws8
 
-# Open specific applications in floating mode
-for_window [title="alsamixer"] floating enable border pixel 1
-for_window [class="calamares"] floating enable border normal
-for_window [class="Clipgrab"] floating enable
-for_window [title="File Transfer*"] floating enable
-for_window [class="Galculator"] floating enable border pixel 1
-for_window [class="GParted"] floating enable border normal
-for_window [class="Lightdm-settings"] floating enable
-for_window [class="Lxappearance"] floating enable sticky enable border normal
-for_window [class="Manjaro-hello"] floating enable
-for_window [class="Manjaro Settings Manager"] floating enable border normal
-for_window [title="MuseScore: Play Panel"] floating enable
-for_window [class="Nitrogen"] floating enable sticky enable border normal
-for_window [class="Oblogout"] fullscreen enable
-for_window [class="octopi"] floating enable
-for_window [title="About Pale Moon"] floating enable
-for_window [class="Pamac-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable
-for_window [class="qt5ct"] floating enable sticky enable border normal
-for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
-for_window [class="Simple-scan"] floating enable border normal
-for_window [class="(?i)System-config-printer.py"] floating enable border normal
-for_window [class="Skype"] floating enable border normal
-for_window [class="Timeset-gui"] floating enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
-for_window [class="Xfburn"] floating enable
-
-# switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
 
 # exit sway
 bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'"
@@ -282,11 +238,6 @@ mode "$mode_system" {
 # Resize window (you can also use the mouse for that)
 bindsym $mod+r mode "resize"
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 5 px or 5 ppt
         bindsym j resize grow height 5 px or 5 ppt
         bindsym k resize shrink height 5 px or 5 ppt
@@ -307,98 +258,15 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id swayblurlock
 
 # Autostart applications
-# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# exec --no-startup-id nitrogen --restore; sleep 1; compton -b
-# exec --no-startup-id nm-applet
-# exec --no-startup-id xfce4-power-manager
-# exec --no-startup-id pamac-tray
-# exec --no-startup-id clipit
-# exec --no-startup-id blueman-applet
-# exec_always --no-startup-id sbxkb
-# exec --no-startup-id conky -c /usr/share/conky/conky_maia
-# exec --no-startup-id start_conky_green
-# exec --no-startup-id xautolock -time 10 -locker blurlock
-# exec_always --no-startup-id ff-theme-util
-# exec_always --no-startup-id fix_xcursor
+exec dex --autostart
 
-# Color palette used for the $term ( ~/.Xresources file )
-# Colors are gathered based on the documentation:
-# https://i3wm.org/docs/userguide.html#xresources
-# Change the variable name at the place you want to match the color
-# of your $term like this:
-# [example]
-# If you want your bar to have the same background color as your 
-# $term background change the line 362 from:
-# background #14191D
-# to:
-# background $term_background
-# Same logic applied to everything else.
-# set_from_resource $term_background background
-# set_from_resource $term_foreground foreground
-# set_from_resource $term_color0     color0
-# set_from_resource $term_color1     color1
-# set_from_resource $term_color2     color2
-# set_from_resource $term_color3     color3
-# set_from_resource $term_color4     color4
-# set_from_resource $term_color5     color5
-# set_from_resource $term_color6     color6
-# set_from_resource $term_color7     color7
-# set_from_resource $term_color8     color8
-# set_from_resource $term_color9     color9
-# set_from_resource $term_color10    color10
-# set_from_resource $term_color11    color11
-# set_from_resource $term_color12    color12
-# set_from_resource $term_color13    color13
-# set_from_resource $term_color14    color14
-# set_from_resource $term_color15    color15
-
-# Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	position bottom
-	status_command i3status
-	bindsym button4 nop
-	bindsym button5 nop
-	strip_workspace_numbers yes
-
-    colors {
-        background #222D31
-        statusline #F9FAF9
-        separator  #454947
-
-#                      border  backgr. text
-        focused_workspace  #F9FAF9 #16a085 #292F34
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #222D31 #EEE8D5
-        binding_mode       #16a085 #2C2C2C #F9FAF9
-        urgent_workspace   #16a085 #FDF6E3 #E5201D
-    }
+  swaybar_command waybar
 }
-
-# hide/unhide i3status bar
-bindsym $mod+m bar mode toggle
-
-# Theme colors
-# class                   border  backgr. text    indic.   child_border
-  client.focused          #556064 #556064 #80FFF9 #FDF6E3 #556064 
-  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948 #2F3D44 
-  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948 #2F3D44 
-  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2 #CB4B16 
-  client.placeholder      #000000 #0c0c0c #ffffff #000000  #000000 
-
-  client.background       #2B2C2B
-
-#############################
-### settings for i3-gaps: ###
-#############################
 
 # Set inner/outer gaps
 gaps inner 14
 gaps outer -2
-
-# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
-# gaps inner|outer current|all set|plus|minus <px>
-# gaps inner all set 10
-# gaps outer all plus 5
 
 # Smart gaps (gaps used if only more than one container on the workspace)
 smart_gaps on
@@ -407,24 +275,18 @@ smart_gaps on
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
 
-# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
-
 # common applications spawner
 set $mode_spawn Spawn: (w)eb, (e)ditor, (r)anger, (c)hat, (m)usic
 bindsym $mod+s mode "$mode_spawn"
 
 mode "$mode_spawn" {
         bindsym $mod+w  exec firefox; mode "default"
-        bindsym $mod+e  exec code-oss --reuse-window; mode "default"
+        bindsym $mod+e  exec codium --reuse-window; mode "default"
         bindsym $mod+r  exec $term -e 'ranger'; mode "default"
         bindsym $mod+c  exec rambox; mode "default"
         bindsym $mod+m  exec lollypop; mode "default"
         bindsym w       exec firefox
-        bindsym e       exec code-oss --reuse-window
+        bindsym e       exec codium --reuse-window
         bindsym r       exec $term -e 'ranger'
         bindsym c       exec rambox
         bindsym m       exec lollypop
@@ -432,35 +294,7 @@ mode "$mode_spawn" {
         bindsym Escape  mode "default"
 }
 
-mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
+exec inactive-windows-transparency.py
+exec mako
 include /etc/sway/config.d/*
+include $HOME/.config/sway/window_hacks
