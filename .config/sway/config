@@ -281,12 +281,12 @@ bindsym $mod+s mode "$mode_spawn"
 
 mode "$mode_spawn" {
         bindsym $mod+w  exec firefox; mode "default"
-        bindsym $mod+e  exec codium --reuse-window; mode "default"
+        bindsym $mod+e  exec code --reuse-window; mode "default"
         bindsym $mod+r  exec $term -e 'ranger'; mode "default"
         bindsym $mod+c  exec rambox; mode "default"
         bindsym $mod+m  exec lollypop; mode "default"
         bindsym w       exec firefox
-        bindsym e       exec codium --reuse-window
+        bindsym e       exec code --reuse-window
         bindsym r       exec $term -e 'ranger'
         bindsym c       exec rambox
         bindsym m       exec lollypop
