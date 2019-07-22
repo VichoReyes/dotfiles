@@ -5,6 +5,7 @@
 # dmenu
 # dex
 # brightnessctl
+# playerctl
 # inactive-windows-transparency.py (from /contrib/ in the sway repo)
 # mako
 
@@ -34,7 +35,8 @@ exec swayidle -w \
     timeout 300 'swaylock -f -c 000000' \
     timeout 400 'swaymsg "output * dpms off"' \
        resume 'swaymsg "output * dpms on"' \
-    before-sleep 'swaylock -f -c 000000'
+    before-sleep 'swaylock -f -c 000000' \
+    lock 'swaylock -f -c 000000'
 
 # Hide borders
 hide_edge_borders none
@@ -221,7 +223,7 @@ bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut.
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 bindsym $mod+0 mode "$mode_system"
 mode "$mode_system" {
-    bindsym l exec swayblurlock, mode "default"
+    bindsym l exec loginctl lock-session, mode "default"
     bindsym s exec systemctl suspend, mode "default"
     bindsym e exit, mode "default"
     bindsym r exec reboot, mode "default"
