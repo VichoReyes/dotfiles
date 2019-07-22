@@ -211,6 +211,7 @@ assign [class="code-oss"] $ws2
 assign [class="VSCodium"] $ws2
 assign [class="transmission-qt"] $ws6
 assign [class="Rambox"] $ws7
+assign [class="TelegramDesktop"] $ws7
 assign [class="lollypop"] $ws8
 
 # reload the configuration file
