@@ -4,7 +4,6 @@
     "python.linting.pylintPath": "pylint3",
     "git.confirmSync": false,
     "git.autofetch": true,
-    "window.titleBarStyle": "custom",
     "editor.formatOnSave": true,
     "elixirLS.dialyzerEnabled": false,
     "emmet.includeLanguages": {
@@ -24,5 +23,6 @@
     "window.zoomLevel": 0,
     "vim.useSystemClipboard": true,
     "git.enableSmartCommit": true,
-    "python.jediEnabled": false
+    "python.jediEnabled": false,
+    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Font Awesome'"
 }
