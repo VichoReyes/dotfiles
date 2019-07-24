@@ -6,6 +6,7 @@
 # dex
 # brightnessctl
 # playerctl
+# nm-applet (the one from the AUR package network-manager-applet-indicator)
 # inactive-windows-transparency.py (from /contrib/ in the sway repo)
 # mako
 
@@ -280,18 +281,19 @@ mode "$mode_spawn" {
         bindsym $mod+w  exec firefox; mode "default"
         bindsym $mod+e  exec code --reuse-window; mode "default"
         bindsym $mod+r  exec $term -e 'ranger'; mode "default"
-        bindsym $mod+c  exec rambox; mode "default"
-        bindsym $mod+m  exec lollypop; mode "default"
+        bindsym $mod+c  exec telegram-desktop; mode "default"
+        bindsym $mod+m  exec spotify; mode "default"
         bindsym w       exec firefox
         bindsym e       exec code --reuse-window
         bindsym r       exec $term -e 'ranger'
-        bindsym c       exec rambox
-        bindsym m       exec lollypop
+        bindsym c       exec telegram-desktop
+        bindsym m       exec spotify
         bindsym Return  mode "default"
         bindsym Escape  mode "default"
 }
 
 exec inactive-windows-transparency.py
 exec mako
+exec nm-applet --indicator
 include /etc/sway/config.d/*
 include $HOME/.config/sway/window_hacks
