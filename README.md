@@ -39,3 +39,8 @@ It's based on the manjaro i3 default config, with parts I didn't use removed.
 
 The fish functions can be useful to some as well. They're not very documented
 but short enough to understand easily.
+
+## Screenshots:
+
+![Clean](/images/clean.png)
+![Cluttered](/images/cluttered.png)
