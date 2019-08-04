@@ -4,7 +4,6 @@
     "python.linting.pylintPath": "pylint3",
     "git.confirmSync": false,
     "git.autofetch": true,
-    "editor.formatOnSave": true,
     "elixirLS.dialyzerEnabled": false,
     "emmet.includeLanguages": {
         "HTML (Eex)": "html"
@@ -24,5 +23,6 @@
     "vim.useSystemClipboard": true,
     "git.enableSmartCommit": true,
     "python.jediEnabled": false,
-    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Font Awesome'"
+    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Font Awesome'",
+    "python.formatting.autopep8Path": "/usr/bin/autopep8-python2"
 }

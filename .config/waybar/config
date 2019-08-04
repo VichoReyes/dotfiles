@@ -30,7 +30,7 @@
         "format-icons": {
             "1": "",
             "2": "",
-            "3": "",
+            "3": "",
             "4": "",
             "7": "",
             "8": "",
@@ -169,6 +169,6 @@
             "default": "🎜"
         },
         "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py" // Script in resources folder
+        "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify" // Script in resources folder
     }
 }

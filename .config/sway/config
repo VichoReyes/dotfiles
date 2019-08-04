@@ -46,6 +46,7 @@ input "1452:582:bcm5974" {
     dwt enabled
     tap enabled
     natural_scroll enabled
+    scroll_factor 0.5
 #    middle_emulation enabled
 }
 
@@ -210,6 +211,7 @@ assign [class="Emacs"] $ws2
 assign [class="Code"] $ws2
 assign [class="code-oss"] $ws2
 assign [class="VSCodium"] $ws2
+assign [class="firefoxdeveloperedition"] $ws3
 assign [class="transmission-qt"] $ws6
 assign [class="Rambox"] $ws7
 assign [class="TelegramDesktop"] $ws7
@@ -263,7 +265,7 @@ bar {
 }
 
 # Set inner/outer gaps
-gaps inner 14
+gaps inner 8
 gaps outer -2
 
 # Smart gaps (gaps used if only more than one container on the workspace)
