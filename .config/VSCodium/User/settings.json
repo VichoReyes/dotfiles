@@ -24,5 +24,10 @@
     "git.enableSmartCommit": true,
     "python.jediEnabled": false,
     "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Font Awesome'",
-    "python.formatting.autopep8Path": "/usr/bin/autopep8-python2"
+    "python.formatting.autopep8Path": "/usr/bin/autopep8-python2",
+    "C_Cpp.clang_format_path": "/usr/bin/clang-format",
+    "C_Cpp.clang_format_fallbackStyle": "WebKit",
+    "editor.formatOnSave": true,
+    "explorer.confirmDragAndDrop": false,
+    "editor.acceptSuggestionOnEnter": "off"
 }

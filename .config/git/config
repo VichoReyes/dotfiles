@@ -12,3 +12,9 @@
 	lg = log --color --graph --oneline --decorate
 [commit]
 	gpgsign = true
+[sendemail]
+	smtpserver = smtp.gmail.com
+	smtpuser = vreyesvaldivieso@gmail.com
+	smtpencryption = tls
+	smtpserverport = 587
+	annotate = yes
