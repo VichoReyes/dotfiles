@@ -27,7 +27,7 @@
     "python.formatting.autopep8Path": "/usr/bin/autopep8-python2",
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
     "C_Cpp.clang_format_fallbackStyle": "WebKit",
-    "editor.formatOnSave": true,
     "explorer.confirmDragAndDrop": false,
-    "editor.acceptSuggestionOnEnter": "off"
+    "editor.acceptSuggestionOnEnter": "off",
+    "python.venvPath": "~/.local/python"
 }
