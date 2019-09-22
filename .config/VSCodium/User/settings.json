@@ -29,5 +29,7 @@
     "C_Cpp.clang_format_fallbackStyle": "WebKit",
     "explorer.confirmDragAndDrop": false,
     "editor.acceptSuggestionOnEnter": "off",
-    "python.venvPath": "~/.local/python"
+    "python.venvPath": "~/.local/python",
+    "files.insertFinalNewline": true,
+    "editor.renderFinalNewline": false
 }
