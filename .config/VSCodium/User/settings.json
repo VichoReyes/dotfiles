@@ -26,10 +26,11 @@
     "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Font Awesome'",
     "python.formatting.autopep8Path": "/usr/bin/autopep8-python2",
     "C_Cpp.clang_format_path": "/usr/bin/clang-format",
-    "C_Cpp.clang_format_fallbackStyle": "WebKit",
     "explorer.confirmDragAndDrop": false,
     "editor.acceptSuggestionOnEnter": "off",
     "python.venvPath": "~/.local/python",
     "files.insertFinalNewline": true,
-    "editor.renderFinalNewline": false
+    "editor.renderFinalNewline": false,
+    "editor.formatOnSave": true,
+    "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: WebKit, IndentWidth: 8, UseTab: ForIndentation, PointerAlignment: Right}"
 }

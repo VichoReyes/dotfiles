@@ -1,5 +1,5 @@
 # Executables needed for this to work:
-# termite
+# alacritty
 # sway{idle,lock}
 # rofi
 # dmenu
@@ -20,7 +20,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term termite
+set $term alacritty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu rofi -show drun -show-icons
@@ -77,7 +77,7 @@ bindsym $mod+d exec $menu
 bindsym $mod+p exec --no-startup-id gopass ls --flat | dmenu | xargs --no-run-if-empty gopass show -c
 
 # generate new password
-bindsym $mod+g exec --no-startup-id "notify-send 'changing or (shift) creating password'; gopass ls --flat | dmenu | xargs --no-run-if-empty gopass generate -f -c --xs ' '"
+bindsym $mod+g exec --no-startup-id "gopass ls --flat | dmenu -p 'changing or (shift) creating password' | xargs --no-run-if-empty gopass generate -f -c -x"
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec brightnessctl set '+5%'
@@ -253,9 +253,10 @@ mode "resize" {
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # exit resize mode: Enter or Escape
+        # exit resize mode: Enter, Escape or $mod+r again
         bindsym Return mode "default"
         bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
 }
 
 # Autostart applications

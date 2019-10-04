@@ -7,6 +7,7 @@
     "modules-left": [
         "sway/workspaces",
         "sway/mode",
+        "custom/scratchpad",
         "custom/media"
     ],
     "modules-center": [
@@ -171,5 +172,12 @@
         },
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify" // Script in resources folder
+    },
+    "custom/scratchpad": {
+        "format": "Scratchpad: {}",
+        "escape": true,
+        "interval": 1,
+        "exec": "swaymsg -t get_tree | jq '.nodes[].nodes[] | select(.name==\"__i3_scratch\").floating_nodes | length'",
+        "exec-if": "swaymsg -t get_tree | jq '.nodes[].nodes[] | select(.name==\"__i3_scratch\").floating_nodes | length' | grep -v '^0$'"
     }
 }
