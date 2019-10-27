@@ -24,6 +24,7 @@ set $term termite
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu rofi -show drun -show-icons
+# set $menu j4-dmenu-desktop --no-generic
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
