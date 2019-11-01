@@ -163,15 +163,15 @@
         "on-click": "pavucontrol"
     },
     "custom/media": {
-        "format": "{icon} {}",
+        "format": "{icon}{}",
         "return-type": "json",
         "max-length": 40,
         "format-icons": {
-            "spotify": "",
-            "default": "🎜"
+            "spotify": " ",
+            "default": ""
         },
         "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify" // Script in resources folder
+        "exec": "$HOME/.config/waybar/mediaplayer.py --player Lollypop" // Script in resources folder
     },
     "custom/scratchpad": {
         "format": "Scratchpad: {}",
