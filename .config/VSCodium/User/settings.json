@@ -31,6 +31,7 @@
     "python.venvPath": "~/.local/python",
     "files.insertFinalNewline": true,
     "editor.renderFinalNewline": false,
-    "editor.formatOnSave": true,
-    "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: WebKit, IndentWidth: 8, UseTab: ForIndentation, PointerAlignment: Right}"
+    "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: WebKit, IndentWidth: 8, UseTab: ForIndentation, PointerAlignment: Right}",
+    "gitlens.currentLine.enabled": false,
+    "gitlens.hovers.currentLine.over": "line"
 }
