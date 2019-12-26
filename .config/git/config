@@ -1,5 +1,6 @@
 [core]
 	editor = /usr/bin/vim
+	autocrlf = input
 [user]
 	email = vreyesvaldivieso@gmail.com
 	name = Vicente Reyes
@@ -10,6 +11,7 @@
 	helper = /usr/bin/pass-git-helper
 [alias]
 	lg = log --color --graph --oneline --decorate
+	blm = log -p -M --follow --stat --
 [commit]
 	gpgsign = true
 [sendemail]

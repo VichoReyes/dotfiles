@@ -33,5 +33,6 @@
     "editor.renderFinalNewline": false,
     "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: WebKit, IndentWidth: 8, UseTab: ForIndentation, PointerAlignment: Right}",
     "gitlens.currentLine.enabled": false,
-    "gitlens.hovers.currentLine.over": "line"
+    "gitlens.hovers.currentLine.over": "line",
+    "python.dataScience.sendSelectionToInteractiveWindow": false
 }

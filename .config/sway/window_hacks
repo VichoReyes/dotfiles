@@ -26,7 +26,14 @@ for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
+for_window [app_id="transmission-gtk"] floating enable
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
+# Automatically inhibit idle with certain applications
+
+for_window [class="Firefox"] inhibit_idle fullscreen # xwayland version
+for_window [app_id="firefox"] inhibit_idle fullscreen # wayland version
+
+for_window [class="Steam"] inhibit_idle fullscreen
