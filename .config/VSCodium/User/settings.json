@@ -34,5 +34,12 @@
     "C_Cpp.clang_format_fallbackStyle": "{BasedOnStyle: WebKit, IndentWidth: 8, UseTab: ForIndentation, PointerAlignment: Right}",
     "gitlens.currentLine.enabled": false,
     "gitlens.hovers.currentLine.over": "line",
-    "python.dataScience.sendSelectionToInteractiveWindow": false
+    "python.dataScience.sendSelectionToInteractiveWindow": false,
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true,
+    "languageServerHaskell.useCustomHieWrapper": true,
+    "languageServerHaskell.useCustomHieWrapperPath": "hie-wrapper",
+    "terminal.integrated.inheritEnv": false,
+    "window.titleBarStyle": "custom",
+    // "terminal.integrated.inheritEnv": false // may solve issues with conda
 }
