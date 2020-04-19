@@ -20,3 +20,5 @@
 	smtpencryption = tls
 	smtpserverport = 587
 	annotate = yes
+[advice]
+	detachedHead = false
