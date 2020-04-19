@@ -20,7 +20,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term termite
+set $term gnome-terminal --hide-menubar
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
 set $menu "killall rofi; rofi -show drun -show-icons"
@@ -57,8 +57,8 @@ input "1452:582:Apple_Inc._Apple_Internal_Keyboard_/_Trackpad" {
 
 # For clamshell mode?
 set $laptop 'Apple Computer Inc 0x9CC5 0x00000000'
-bindswitch --reload lid:on output $laptop disable
-bindswitch --reload lid:off output $laptop enable
+# bindswitch --reload lid:on output $laptop disable
+# bindswitch --reload lid:off output $laptop enable
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -83,7 +83,7 @@ bindsym $mod+d exec $menu
 bindsym $mod+p exec --no-startup-id gopass ls --flat | dmenu | xargs --no-run-if-empty gopass show -c
 
 # generate new password
-bindsym $mod+g exec --no-startup-id "gopass ls --flat | dmenu -p 'changing or (shift) creating password' | xargs --no-run-if-empty gopass generate -f -c -x"
+bindsym $mod+g exec --no-startup-id "gopass ls --flat | dmenu -p 'changing or (shift) creating password' | xargs --no-run-if-empty gopass generate -f -c --xs 5"
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec brightnessctl set '+5%'
@@ -219,6 +219,7 @@ assign [class="code-oss"] $ws2
 assign [class="VSCodium"] $ws2
 assign [class="jetbrains*"] $ws2
 assign [class="firefoxdeveloperedition"] $ws3
+assign [app_id="thunderbird"] $ws6
 assign [class="Thunderbird"] $ws6
 assign [class="Rambox"] $ws7
 assign [class="TelegramDesktop"] $ws7
@@ -265,11 +266,15 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
+# Default wallpaper
+output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
 # Autostart applications
 exec dex --autostart
 
 bar {
-  swaybar_command waybar
+       swaybar_command waybar
+       # status_command i3status
 }
 
 # Set inner/outer gaps
@@ -309,6 +314,5 @@ mode "$mode_spawn" {
 exec inactive-windows-transparency.py
 exec mako
 exec nm-applet --indicator
-exec wallpaper
 include /etc/sway/config.d/*
 include $HOME/.config/sway/window_hacks
